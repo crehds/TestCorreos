@@ -12,6 +12,9 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  console.log(config);
+  console.log(process.env.USER);
+  console.log(process.env.PASSWORD);
   const { email, asunto, mensaje } = req.body;
   nodemailer.createTestAccount((err, account) => {
     const htmlEmail = `
