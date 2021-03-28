@@ -6,10 +6,13 @@ const path = require('path');
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+/* API endpoint  */
+app.use('/api', mailer);
+
+/* handle callback for any request that doesn't match one above */
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
-app.use('/api', mailer);
 
 let port_number = process.env.PORT || 4000;
 
